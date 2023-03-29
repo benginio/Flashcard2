@@ -13,8 +13,7 @@ public class FlashcardDatabase {
     public FlashcardDatabase(Context context) {
         db = Room.databaseBuilder(
                         context.getApplicationContext(),
-                        AppDatabase.class,
-                        "flashcard-database"
+                        AppDatabase.class, "flashcard-database"
                 )
                 .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
@@ -23,7 +22,7 @@ public class FlashcardDatabase {
 
     public void initFirstCard() {
         if (db.flashcardDao().getAll().isEmpty()) {
-            insertCard(new Flashcard("Who is the 44th President of the United States", "Barack Obama","Donald Trump", "Joe Biden",0));
+            insertCard(new Flashcard("Who is the 44th President of the United States", "Barack Obama"));
         }
     }
 
@@ -53,4 +52,6 @@ public class FlashcardDatabase {
             db.flashcardDao().delete(flashcard);
         }
     }
+
 }
+
